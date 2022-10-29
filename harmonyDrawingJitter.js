@@ -48,7 +48,7 @@ var brush = new simple(this,colorArray,BRUSH_SIZE,BRUSH_PRESSURE);
 var window1 = new JitterObject("jit.window", "monitor1");
 window1.fsaa = 1;
 // window1.size = [1280, 720];
-window1.size = [640, 360];
+window1.size = [832, 468];
 window1.grow = 0;
 // window1.pos [0., 0., 0., 0.];
 var render1 = new JitterObject("jit.gl.render", "monitor1");

@@ -3,14 +3,14 @@
 		"fileversion" : 1,
 		"appversion" : 		{
 			"major" : 8,
-			"minor" : 0,
-			"revision" : 6,
+			"minor" : 3,
+			"revision" : 3,
 			"architecture" : "x64",
 			"modernui" : 1
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 0.0, 469.0, 822.0, 425.0 ],
+		"rect" : [ 0.0, 440.0, 822.0, 425.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -37,6 +37,7 @@
 		"tags" : "",
 		"style" : "",
 		"subpatcher_template" : "",
+		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
 				"box" : 				{
 					"id" : "obj-2",
@@ -59,6 +60,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-4",
 					"lockeddragscroll" : 1,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"numinlets" : 0,
 					"numoutlets" : 2,
@@ -68,8 +70,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 6,
+							"minor" : 3,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -102,6 +104,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -135,7 +138,7 @@
 									"allowdrag" : 0,
 									"fontsize" : 10.0,
 									"id" : "obj-31",
-									"items" : [ "Y'CbCr 4:2:2 - uyvy - 160 x 120", ",", "Y'CbCr 4:2:2 - uyvy - 176 x 144", ",", "Y'CbCr 4:2:2 - uyvy - 320 x 240", ",", "Y'CbCr 4:2:2 - uyvy - 352 x 288", ",", "Y'CbCr 4:2:2 - uyvy - 480 x 360", ",", "Y'CbCr 4:2:2 - uyvy - 640 x 480", ",", "Y'CbCr 4:2:2 - uyvy - 960 x 540", ",", "Y'CbCr 4:2:2 - uyvy - 1024 x 576", ",", "Y'CbCr 4:2:2 - uyvy - 1280 x 720" ],
+									"items" : [ "Y'CbCr 4:2:0 - 420v - 1920 x 1080", ",", "Y'CbCr 4:2:0 - 420v - 1280 x 720", ",", "Y'CbCr 4:2:0 - 420v - 1080 x 1920", ",", "Y'CbCr 4:2:0 - 420v - 1760 x 1328", ",", "Y'CbCr 4:2:0 - 420v - 640 x 480", ",", "Y'CbCr 4:2:0 - 420v - 1328 x 1760", ",", "Y'CbCr 4:2:0 - 420v - 1552 x 1552" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -311,7 +314,7 @@
 									"allowdrag" : 0,
 									"fontsize" : 10.0,
 									"id" : "obj-18",
-									"items" : "FaceTime HD Camera (Built-in)",
+									"items" : "FaceTime HD Camera",
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -410,11 +413,11 @@
 									"presentation_rect" : [ 68.53125, 145.0, 33.0, 33.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_invisible" : 1,
+											"parameter_longname" : "move[1]",
 											"parameter_mmax" : 1.0,
 											"parameter_shortname" : "move",
-											"parameter_type" : 3,
-											"parameter_longname" : "move[1]",
-											"parameter_invisible" : 1
+											"parameter_type" : 3
 										}
 
 									}
@@ -718,7 +721,8 @@
 									"outlettype" : [ "jit_matrix", "" ],
 									"patching_rect" : [ 197.26034599999997, 465.36953699999998, 131.999999999999943, 83.63046300000002 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 96.814209000000005, 82.349487000000011, 90.0, 60.0 ]
+									"presentation_rect" : [ 96.814209000000005, 82.349487000000011, 90.0, 60.0 ],
+									"sync" : 1
 								}
 
 							}
@@ -1105,8 +1109,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 6,
+							"minor" : 3,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -1139,6 +1143,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-2",
@@ -1200,8 +1205,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1234,6 +1239,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"id" : "obj-3",
@@ -1469,8 +1475,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -1503,6 +1509,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -1776,7 +1783,8 @@
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 229.0, 132.0, 89.0, 22.0 ],
 									"saved_object_attributes" : 									{
-										"embed" : 1
+										"embed" : 1,
+										"precision" : 6
 									}
 ,
 									"text" : "coll framerates"
@@ -2014,6 +2022,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-21",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"numinlets" : 3,
 					"numoutlets" : 1,
@@ -2023,8 +2032,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 6,
+							"minor" : 3,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -2057,6 +2066,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-22",
@@ -2068,8 +2078,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2102,6 +2112,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -2646,7 +2657,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 1131.545532000000094, 140.950255999999996, 80.0, 60.0 ]
+									"patching_rect" : [ 1131.545532000000094, 140.950255999999996, 80.0, 60.0 ],
+									"sync" : 1
 								}
 
 							}
@@ -2657,7 +2669,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 1044.545532000000094, 140.950255999999996, 80.0, 60.0 ]
+									"patching_rect" : [ 1044.545532000000094, 140.950255999999996, 80.0, 60.0 ],
+									"sync" : 1
 								}
 
 							}
@@ -2668,7 +2681,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 957.54553199999998, 140.950255999999996, 80.0, 60.0 ]
+									"patching_rect" : [ 957.54553199999998, 140.950255999999996, 80.0, 60.0 ],
+									"sync" : 1
 								}
 
 							}
@@ -2679,7 +2693,8 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 828.306151999999997, 125.5, 117.0, 81.0 ]
+									"patching_rect" : [ 828.306151999999997, 125.5, 117.0, 81.0 ],
+									"sync" : 1
 								}
 
 							}
@@ -2739,8 +2754,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -2773,6 +2788,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -3048,8 +3064,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -3082,6 +3098,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -3250,8 +3267,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 0,
-															"revision" : 6,
+															"minor" : 3,
+															"revision" : 3,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -3284,6 +3301,7 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "",
+														"assistshowspatchername" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"fontface" : 2,
@@ -4106,8 +4124,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -4140,6 +4158,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -5428,8 +5447,8 @@
 									"id" : "obj-49",
 									"maxclass" : "preset",
 									"numinlets" : 1,
-									"numoutlets" : 4,
-									"outlettype" : [ "preset", "int", "preset", "int" ],
+									"numoutlets" : 5,
+									"outlettype" : [ "preset", "int", "preset", "int", "" ],
 									"patching_rect" : [ 824.260620000000017, 286.450256000000024, 152.0, 35.0 ],
 									"pattrstorage" : "draw.json",
 									"presentation" : 1,
@@ -5614,6 +5633,7 @@
 									"enablevscroll" : 0,
 									"id" : "obj-76",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "pattr-helper.maxpat",
 									"numinlets" : 1,
@@ -5823,11 +5843,11 @@
 									"patching_rect" : [ 821.0, 436.049743999999976, 64.0, 23.0 ],
 									"restore" : 									{
 										"brush" : [ 0 ],
-										"color" : [ 0.328457788042084, 0.517321016166282, 0.0, 1.0, 0.227513227513228, 1.0, 0.258660508083141 ],
+										"color" : [ 1.0, 0.111111, 0.111111, 1.0, 1.0, 1.0, 0.555556 ],
 										"composite" : [ 0 ],
 										"drawmode" : [ 0 ],
 										"pressure" : [ 94 ],
-										"size" : [ 12 ]
+										"size" : [ 30 ]
 									}
 ,
 									"text" : "autopattr",
@@ -5851,7 +5871,7 @@
 , 							{
 								"box" : 								{
 									"angle" : 0.0,
-									"bgcolor" : [ 0.378457788042084, 0.567321016166282, 0.05, 1.05 ],
+									"bgcolor" : [ 1.05, 0.161111, 0.161111, 1.05 ],
 									"id" : "obj-12",
 									"maxclass" : "panel",
 									"mode" : 0,
@@ -5870,8 +5890,8 @@
 									"id" : "obj-11",
 									"maxclass" : "preset",
 									"numinlets" : 1,
-									"numoutlets" : 4,
-									"outlettype" : [ "preset", "int", "preset", "int" ],
+									"numoutlets" : 5,
+									"outlettype" : [ "preset", "int", "preset", "int", "" ],
 									"patching_rect" : [ 630.0, 3.75, 56.0, 53.0 ],
 									"preset_data" : [ 										{
 											"number" : 1,
@@ -6220,8 +6240,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -6254,6 +6274,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -7610,6 +7631,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-13",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"numinlets" : 4,
 					"numoutlets" : 0,
@@ -7618,8 +7640,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 6,
+							"minor" : 3,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -7652,7 +7674,20 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-46",
+									"maxclass" : "button",
+									"numinlets" : 1,
+									"numoutlets" : 1,
+									"outlettype" : [ "bang" ],
+									"parameter_enable" : 0,
+									"patching_rect" : [ 629.0, 428.0, 24.0, 24.0 ]
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-51",
 									"maxclass" : "button",
@@ -7848,7 +7883,8 @@
 									"outlettype" : [ "jit_matrix", "" ],
 									"patching_rect" : [ 98.482544000000004, 385.0, 115.0, 67.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 18.0, 87.5, 180.0, 120.0 ]
+									"presentation_rect" : [ 18.0, 87.5, 180.0, 120.0 ],
+									"sync" : 1
 								}
 
 							}
@@ -8005,10 +8041,10 @@
 									"patching_rect" : [ 914.482543999999962, 256.772704999999974, 59.5, 20.0 ],
 									"restore" : 									{
 										"menu1" : [ 0 ],
-										"menu2" : [ 0 ],
+										"menu2" : [ 1 ],
 										"move1" : [ 1 ],
 										"move2" : [ 1 ],
-										"xfade" : [ 0 ]
+										"xfade" : [ 70 ]
 									}
 ,
 									"text" : "autopattr",
@@ -8070,14 +8106,14 @@
 									"arrow" : 0,
 									"autopopulate" : 1,
 									"id" : "obj-71",
-									"items" : [ "ART-FH104-38.mov", ",", "conFIGURING_the_CAVE-short.mov", ",", "TM102.mov" ],
+									"items" : [ "dvducks.mov", ",", "IMG_0954-422.MOV" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 568.482543999999962, 83.5, 159.0, 22.0 ],
-									"prefix" : "Macintosh HD:/Users/billy/Documents/dream15/media/",
+									"prefix" : "~/Documents/GitHub/dream/media/",
 									"presentation" : 1,
 									"presentation_rect" : [ 220.98254399999999, 65.5, 146.0, 22.0 ],
 									"varname" : "menu2"
@@ -8137,7 +8173,8 @@
 									"outlettype" : [ "jit_matrix", "" ],
 									"patching_rect" : [ 691.482543999999962, 344.0, 115.0, 67.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 220.98254399999999, 85.5, 180.0, 120.0 ]
+									"presentation_rect" : [ 220.98254399999999, 85.5, 180.0, 120.0 ],
+									"sync" : 1
 								}
 
 							}
@@ -8212,8 +8249,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -8246,6 +8283,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -8400,8 +8438,8 @@
 														"fileversion" : 1,
 														"appversion" : 														{
 															"major" : 8,
-															"minor" : 0,
-															"revision" : 6,
+															"minor" : 3,
+															"revision" : 3,
 															"architecture" : "x64",
 															"modernui" : 1
 														}
@@ -8434,6 +8472,7 @@
 														"tags" : "",
 														"style" : "",
 														"subpatcher_template" : "",
+														"assistshowspatchername" : 0,
 														"boxes" : [ 															{
 																"box" : 																{
 																	"fontname" : "Arial",
@@ -9142,8 +9181,8 @@
 									"id" : "obj-12",
 									"maxclass" : "preset",
 									"numinlets" : 1,
-									"numoutlets" : 4,
-									"outlettype" : [ "preset", "int", "preset", "int" ],
+									"numoutlets" : 5,
+									"outlettype" : [ "preset", "int", "preset", "int", "" ],
 									"patching_rect" : [ 1087.195801000000074, 58.0, 136.48254399999999, 31.0 ],
 									"pattrstorage" : "clip",
 									"presentation" : 1,
@@ -9228,8 +9267,8 @@
 										"fileversion" : 1,
 										"appversion" : 										{
 											"major" : 8,
-											"minor" : 0,
-											"revision" : 6,
+											"minor" : 3,
+											"revision" : 3,
 											"architecture" : "x64",
 											"modernui" : 1
 										}
@@ -9262,6 +9301,7 @@
 										"tags" : "",
 										"style" : "",
 										"subpatcher_template" : "",
+										"assistshowspatchername" : 0,
 										"boxes" : [ 											{
 												"box" : 												{
 													"fontname" : "Arial",
@@ -9762,11 +9802,11 @@
 									"presentation_rect" : [ 46.0, 212.5, 33.0, 33.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_invisible" : 1,
+											"parameter_longname" : "move",
 											"parameter_mmax" : 1.0,
 											"parameter_shortname" : "move",
-											"parameter_type" : 3,
-											"parameter_longname" : "move",
-											"parameter_invisible" : 1
+											"parameter_type" : 3
 										}
 
 									}
@@ -9885,6 +9925,7 @@
 									"enablevscroll" : 0,
 									"id" : "obj-76",
 									"lockeddragscroll" : 0,
+									"lockedsize" : 0,
 									"maxclass" : "bpatcher",
 									"name" : "pattr-helper.maxpat",
 									"numinlets" : 1,
@@ -9933,14 +9974,14 @@
 									"arrow" : 0,
 									"autopopulate" : 1,
 									"id" : "obj-49",
-									"items" : [ "ART-FH104-38.mov", ",", "conFIGURING_the_CAVE-short.mov", ",", "TM102.mov" ],
+									"items" : [ "dvducks.mov", ",", "IMG_0954-422.MOV" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 245.48254399999999, 83.5, 159.0, 22.0 ],
-									"prefix" : "Macintosh HD:/Users/billy/Documents/dream15/media/",
+									"prefix" : "~/Documents/GitHub/dream/media/",
 									"presentation" : 1,
 									"presentation_rect" : [ 18.0, 65.5, 146.0, 22.0 ],
 									"varname" : "menu1"
@@ -10264,6 +10305,13 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-25", 0 ],
+									"source" : [ "obj-46", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-29", 0 ],
 									"source" : [ "obj-48", 0 ]
 								}
@@ -10386,6 +10434,14 @@
 , 							{
 								"patchline" : 								{
 									"destination" : [ "obj-45", 1 ],
+									"order" : 3,
+									"source" : [ "obj-80", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-46", 0 ],
 									"order" : 2,
 									"source" : [ "obj-80", 0 ]
 								}
@@ -10442,6 +10498,7 @@
 					"enablevscroll" : 0,
 					"id" : "obj-3",
 					"lockeddragscroll" : 0,
+					"lockedsize" : 0,
 					"maxclass" : "bpatcher",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -10450,8 +10507,8 @@
 						"fileversion" : 1,
 						"appversion" : 						{
 							"major" : 8,
-							"minor" : 0,
-							"revision" : 6,
+							"minor" : 3,
+							"revision" : 3,
 							"architecture" : "x64",
 							"modernui" : 1
 						}
@@ -10484,6 +10541,7 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
+						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
 									"fontname" : "Arial",
@@ -10877,35 +10935,36 @@
 			"parameterbanks" : 			{
 
 			}
-
+,
+			"inherited_shortname" : 1
 		}
 ,
 		"dependency_cache" : [ 			{
-				"name" : "pattr-helper.maxpat",
-				"bootpath" : "~/Library/Application Support/Cycling '74/Max 8/Examples/utilities",
-				"patcherrelativepath" : "../../Library/Application Support/Cycling '74/Max 8/Examples/utilities",
-				"type" : "JSON",
-				"implicit" : 1
-			}
-, 			{
 				"name" : "clip.json",
-				"bootpath" : "~/Documents/dream15",
+				"bootpath" : "~/Documents/GitHub/dream",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "draw.json",
-				"bootpath" : "~/Documents/dream15",
+				"bootpath" : "~/Documents/GitHub/dream",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "harmonyDrawingJitter.js",
-				"bootpath" : "~/Documents/dream15",
+				"bootpath" : "~/Documents/GitHub/dream",
 				"patcherrelativepath" : ".",
 				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "pattr-helper.maxpat",
+				"bootpath" : "~/Library/Application Support/Cycling '74/Max 8/Examples/utilities",
+				"patcherrelativepath" : "../../../Library/Application Support/Cycling '74/Max 8/Examples/utilities",
+				"type" : "JSON",
 				"implicit" : 1
 			}
  ],

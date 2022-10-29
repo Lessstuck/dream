@@ -49,6 +49,7 @@ var window1 = new JitterObject("jit.window", "monitor1");
 window1.fsaa = 1;
 // window1.size = [1280, 720];
 window1.size = [640, 360];
+window1.grow = 0;
 // window1.pos [0., 0., 0., 0.];
 var render1 = new JitterObject("jit.gl.render", "monitor1");
 var sketch1 = new JitterObject("jit.gl.sketch", "monitor1");
@@ -297,7 +298,7 @@ function setBrushColor(r,g,b)
 
 function clearCanvas()
 {
-
+    
     if(BRUSH_TYPE == "ribbon")
         brush.destroy();
 
@@ -363,14 +364,21 @@ function drawLine(target,xPoint1,yPoint1,xPoint2,yPoint2,r,g,b,a,bSize)
     var new_x1 = sketch1.screentoworld(xPoint2, yPoint2)[0];
     var new_y1 = sketch1.screentoworld(xPoint2, yPoint2)[1];
 
+    sketch1.strokepoint(old_x1,old_y1);
+    sketch1.strokepoint(new_x1,new_y1);
+    sketch1.endstroke();
+//////////////////////////////////////////////////////////////////////  hack to fix scaling issue in 2022
+    xPoint1 = 0.5 * xPoint1;
+    xPoint2 = 0.5 * xPoint2;  
+    // yPoint1 = 0.5 * yPoint1 + 180;
+    // yPoint2 = 0.5 * yPoint2 + 180;                      
+    yPoint1 = 0.5 * yPoint1 + 0.5 * window1.size[1];
+    yPoint2 = 0.5 * yPoint2 + 0.5 * window1.size[1];
+
     var old_x2 = sketch2.screentoworld(xPoint1, yPoint1)[0];
     var old_y2 = sketch2.screentoworld(xPoint1, yPoint1)[1];
     var new_x2 = sketch2.screentoworld(xPoint2, yPoint2)[0];
     var new_y2 = sketch2.screentoworld(xPoint2, yPoint2)[1];
-
-    sketch1.strokepoint(old_x1,old_y1);
-    sketch1.strokepoint(new_x1,new_y1);
-    sketch1.endstroke();
 
     sketch2.strokepoint(old_x2,old_y2);
     sketch2.strokepoint(new_x2,new_y2);

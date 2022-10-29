@@ -1,0 +1,21 @@
+{
+	"pattrstorage" : 	{
+		"name" : "clip",
+		"slots" : 		{
+			"1" : 			{
+				"id" : 1,
+				"data" : 				{
+					"menu1" : [ 0 ],
+					"menu2" : [ 0 ],
+					"move1" : [ 1 ],
+					"move2" : [ 1 ],
+					"xfade" : [ 72 ]
+				}
+
+			}
+
+		}
+
+	}
+
+}

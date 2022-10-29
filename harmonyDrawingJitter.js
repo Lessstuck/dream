@@ -21,7 +21,9 @@
 *
 *  Improvements: 
 *    - Clean up the code (creating a lineStrokeHelper Method/add color,Brush_Size,Brush_Pressure properties to the classes)
-*   - Add a drawing and brush manager, so that more user can simultaneously draw on the canvas
+*    - Add a drawing and brush manager, so that more user can simultaneously draw on the canvas
+*    - Increased resolution, added matrix output, fixed typos
+*    - Duplicated render context and gl.sketch for 1) listening and 2) matrixout with a backgroundplane-free image
 ************************************************************************************************************/
 
 inlets = 2;
@@ -42,44 +44,34 @@ var startDrawing = true;
 
 var brush = new simple(this,colorArray,BRUSH_SIZE,BRUSH_PRESSURE);
 
-var window = new JitterObject("jit.window", "monitor");
-window.fsaa = 1;
-window.size = [1280, 720];
-window.pos [0., 0., 0., 0.];
-var render = new JitterObject("jit.gl.render", "monitor");
-var sketch = new JitterObject("jit.gl.sketch", "monitor");
+//                       Listener Window 1
+var window1 = new JitterObject("jit.window", "monitor1");
+window1.fsaa = 1;
+window1.size = [1280, 720];
+window1.pos [0., 0., 0., 0.];
+var render1 = new JitterObject("jit.gl.render", "monitor1");
+var sketch1 = new JitterObject("jit.gl.sketch", "monitor1");
+//                       Matrix Out Window 2
+var window2 = new JitterObject("jit.window", "monitor2");
+// var window2 = this.patcher.newdefault(750, 350, "jit.pwindow", "@name", "monitor2");
+window2.fsaa = 1;
+window2.size = [1280, 720];
+window2.pos [0., 0., 0., 0.];
+window2.visible = 0;
+var render2 = new JitterObject("jit.gl.render", "monitor2");
+var sketch2 = new JitterObject("jit.gl.sketch", "monitor2");
 
-///////////////// sending video in
-
-//var backgroundMatrix = new JitterMatrix();
-//var backgroundPlane = new JitterObject("jit.gl.videoplane", "monitor");
-//	backgroundPlane.color = (1., 1., 1., 1.);
-//	backgroundPlane.blend_enable = 1;
-
-//function jit_matrix(inname) {
-//	if (inlet==1) {
-//		backgroundMatrix.setinfo(inname);
-//		backgroundMatrix.frommatrix(inname);
-//		outlet(1,"jit_matrix", backgroundMatrix.name);
-//		backgroundPlane.jit_matrix(backgroundMatrix);
-//	}
-//}
-
-
-
-////sketch.blend_enable = 0;
-//sketch.depth_enable = 0;
-var listener = new JitterListener(window.getregisteredname(), windowcallback);
+var listener = new JitterListener(window1.getregisteredname(), windowcallback);
 var globalButton = 0;
 
 resetsketch();
-
-// set up jit.gl.sketch defaults to 2d drawing
+// set up each jit.gl.sketch's defaults to 2d drawing
 function resetsketch()
 {
-    render.drawswap(); // ensure context is recreated and valid
-    with (sketch) {
-        var aspect = window.size[0]/window.size[1];
+    //           Listener 1
+    render1.drawswap(); // ensure context is recreated and valid
+    with (sketch1) {
+        var aspect1 = window1.size[0]/window1.size[1];
         immediate = 1;
 		blend_enable = 1;
 		depth_enable = 1;
@@ -95,7 +87,7 @@ function resetsketch()
         gldisable("texture");  
         glmatrixmode("projection");
         glloadidentity();
-        glortho(-aspect, aspect, -1, 1, -1,100.);
+        glortho(-aspect1, aspect1, -1, 1, -1,100.);
         glmatrixmode("modelview");          
         glloadidentity();        
         glulookat(0.,0.,2.,0.,0.,0.,0.,0.,1.);          
@@ -103,7 +95,35 @@ function resetsketch()
         glclear();
         glenable("blend");
     }
-    render.drawswap();
+    render1.drawswap();
+    //           Matrix 2
+    render2.drawswap(); // ensure context is recreated and valid
+    with (sketch2) {
+        var aspect2 = window2.size[0]/window2.size[1];
+        immediate = 1;
+		blend_enable = 1;
+		depth_enable = 1;
+        glpolygonmode("front_and_back","fill");
+        glpointsize(1.);
+        gllinewidth(1.);
+        gldisable("depth_test");
+        gldisable("fog");
+        glcolor(0.,0.,0.,1.);
+        glshademodel("smooth");
+        gldisable("lighting");
+        gldisable("normalize");  
+        gldisable("texture");  
+        glmatrixmode("projection");
+        glloadidentity();
+        glortho(-aspect2, aspect2, -1, 1, -1,100.);
+        glmatrixmode("modelview");          
+        glloadidentity();        
+        glulookat(0.,0.,2.,0.,0.,0.,0.,0.,1.);          
+        glclearcolor(0., 0., 0., 0.);    
+        glclear();
+        glenable("blend");
+    }
+    render2.drawswap();
 }
 ////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////
@@ -119,26 +139,30 @@ function what()
 
 function gllinewidth(w)
 {
-	sketch.gllinewidth(w);
+	sketch1.gllinewidth(w);
+	sketch2.gllinewidth(w);
 }
 
 
 function glcolor(r, g, b, a)
 {
 
-	sketch.glcolor(r, g, b, a);
+	sketch1.glcolor(r, g, b, a);
+	sketch2.glcolor(r, g, b, a);
 }
 
 
 function moveto(x, y, z)
 {
-	sketch.moveto(x, y, z);
+	sketch1.moveto(x, y, z);
+	sketch2.moveto(x, y, z);
 }
 
 
 function lineto(x, y, z)
 {
-	sketch.lineto(x, y, z);
+	sketch1.lineto(x, y, z);
+	sketch2.lineto(x, y, z);
 }
 
 
@@ -164,7 +188,7 @@ function setCoordinate(xpos,ypos)
     }
         else
     {
-        post("setCoordinate: To less arguments\n");
+        post("setCoordinate: Too few arguments\n");
     }
 }
 
@@ -223,7 +247,7 @@ function setBrush(type)
     }
         else
     {
-        post("setBrush: To less arguments\n");
+        post("setBrush:  Too few arguments\n");
     }
 }
 
@@ -236,7 +260,7 @@ function setBrushSize(val)
     }
         else
     {
-        post("setBrushSize: To less arguments\n");
+        post("setBrushSize:  Too few arguments\n");
     }
 }
 
@@ -249,7 +273,7 @@ function setBrushPressure(val)
     }
         else
     {
-        post("setBrushPressure: To less arguments\n");
+        post("setBrushPressure:  Too few arguments\n");
     }
 }
 
@@ -266,7 +290,7 @@ function setBrushColor(r,g,b)
     }
         else
     {
-        post("setBrushColor: To less arguments\n");
+        post("setBrushColor:  Too few arguments\n");
     }
 }
 
@@ -293,45 +317,63 @@ function bang()
 // THE MAIN RENDER EVENT
 function refresh()
 {
+	render2.to_texture  ("drawer2");
+//	render1.to_texture  ("drawer1");
 	outlet(1, "bang");
-	render.to_texture  ("drawer");
 	outlet(0, "bang");
-    render.swap();
+    render2.swap();
+    render1.swap();
 }
 
-function notifydeleted()
-{
-    //just to force free in case not garbage collected automatically 
-    sketch.freepeer();
-    render.freepeer();
-    window.freepeer();
-}
 
-function msg_float(value)
-{
+function notifydeleted() {
+//just to force free in case not garbage collected automatically 
+sketch1.freepeer();
+sketch2.freepeer();
+render1.freepeer();
+render2.freepeer();
+window1.freepeer();
+window2.freepeer();
+ }
+
+function msg_float(value) {
     brush.brushSize = value;
 }
+
 /////////////////////////////////////////////////////////////
 //  Helper Functions
 
 // Draw Line
 function drawLine(target,xPoint1,yPoint1,xPoint2,yPoint2,r,g,b,a,bSize)
 {
-    sketch.glenable("blend");
-    sketch.beginstroke("basic2d");
-    sketch.strokeparam ("scale", bSize);
+    sketch1.glenable("blend");
+    sketch1.beginstroke("basic2d");
+    sketch1.strokeparam ("scale", bSize);
+    sketch2.glenable("blend");
+    sketch2.beginstroke("basic2d");
+    sketch2.strokeparam ("scale", bSize);
+    
     var tColor = mapColor2RGBA(r,g,b,a);
-    sketch.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+    sketch1.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+    sketch2.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
     
-    var old_x = sketch.screentoworld(xPoint1, yPoint1)[0];
-    var old_y = sketch.screentoworld(xPoint1, yPoint1)[1];
-    var new_x = sketch.screentoworld(xPoint2, yPoint2)[0];
-    var new_y = sketch.screentoworld(xPoint2, yPoint2)[1];
+    var old_x1 = sketch1.screentoworld(xPoint1, yPoint1)[0];
+    var old_y1 = sketch1.screentoworld(xPoint1, yPoint1)[1];
+    var new_x1 = sketch1.screentoworld(xPoint2, yPoint2)[0];
+    var new_y1 = sketch1.screentoworld(xPoint2, yPoint2)[1];
     
-    sketch.strokepoint(old_x,old_y);
-    sketch.strokepoint(new_x,new_y);
-    //sketch.linesegment (old_x, old_y, 0, new_x, new_y, 0);
-    sketch.endstroke();
+    var old_x2 = sketch2.screentoworld(xPoint1, yPoint1)[0];
+    var old_y2 = sketch2.screentoworld(xPoint1, yPoint1)[1];
+    var new_x2 = sketch2.screentoworld(xPoint2, yPoint2)[0];
+    var new_y2 = sketch2.screentoworld(xPoint2, yPoint2)[1];
+    
+    sketch1.strokepoint(old_x1,old_y1);
+    sketch1.strokepoint(new_x1,new_y1);
+    sketch1.endstroke();
+    
+    sketch2.strokepoint(old_x2,old_y2);
+    sketch2.strokepoint(new_x2,new_y2);
+    sketch2.endstroke();
 }
 // map the color to OpenGL Color
 function mapColor2RGBA(r,g,b,a)
@@ -897,8 +939,8 @@ function ribbon(context,color, lineSize,press)
     this.context = context;
     this.type = "ribbon";
     this.pressure = press;
-    this.canvasWidth = window.size[0];
-    this.canvasHeight = window.size[1];
+    this.canvasWidth = window1.size[0];
+    this.canvasHeight = window1.size[1];
     this.color = color;
     this.brushSize = lineSize;
     
@@ -910,7 +952,7 @@ function ribbon(context,color, lineSize,press)
 
 
 
-function ribbonStart()
+/* function ribbonStart()
 {
     var scope = this;
 
@@ -936,13 +978,13 @@ function ribbonStart()
         {
             // much cleaner version but it is not drawing, Don'T know why
             /*var r_old_x = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[0];
-            var r_old_y = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
+            var r_old_y = sketch1.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
             
             scope.painters[i].dx -= scope.painters[i].ax = (scope.painters[i].ax + (scope.painters[i].dx - scope.mouseX) * scope.painters[i].div) * scope.painters[i].ease;
             scope.painters[i].dy -= scope.painters[i].ay = (scope.painters[i].ay + (scope.painters[i].dy - scope.mouseY) * scope.painters[i].div) * scope.painters[i].ease;
             
-            var r_new_x = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[0];
-            var r_new_y = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
+            var r_new_x = sketch1.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[0];
+            var r_new_y = sketch1.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
             
             drawLine(scope.context,
                     r_old_x,r_old_y,
@@ -952,28 +994,35 @@ function ribbonStart()
                     scope.brushSize);
 //            post("Ribbon Draw :: ("+ r_old_x +"/"+ r_old_y + ")   ::::   (" + r_new_x + "/" + r_new_y + ")\n");
 //            post("Ribbon Color: " + scope.color[0] + " / " + scope.color[1] + " / " + scope.color[2] + " / " +255 * 0.05 * scope.pressure + "\n");
-//            post("Ribbon Brush Size:" + scope.brushSize + " --- " + scope.pressure + "\n");*/
+//            post("Ribbon Brush Size:" + scope.brushSize + " --- " + scope.pressure + "\n");
             
-            /*** not so nice code solution, but it works without problems **/
-            sketch.glenable("blend");
-            sketch.beginstroke("basic2d");
-            sketch.strokeparam ("scale", scope.brushSize);
+// not so nice code solution, but it works without problems
+            sketch1.glenable("blend");
+            sketch1.beginstroke("basic2d");
+            sketch1.strokeparam ("scale", scope.brushSize);
+            sketch2.glenable("blend");
+            sketch2.beginstroke("basic2d");
+            sketch2.strokeparam ("scale", scope.brushSize);
             var tColor = mapColor2RGBA(scope.color[0],scope.color[1],scope.color[2],255 * 0.05 * scope.pressure);
-            sketch.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+            sketch1.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+            sketch2.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
             
-            old_x = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[0];
-            old_y = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
+            old_x = sketch1.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[0];
+            old_y = sketch1.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
             
             scope.painters[i].dx -= scope.painters[i].ax = (scope.painters[i].ax + (scope.painters[i].dx - scope.mouseX) * scope.painters[i].div) * scope.painters[i].ease;
             scope.painters[i].dy -= scope.painters[i].ay = (scope.painters[i].ay + (scope.painters[i].dy - scope.mouseY) * scope.painters[i].div) * scope.painters[i].ease;
             
-            new_x = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[0];
-            new_y = sketch.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
+            new_x = sketch1.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[0];
+            new_y = sketch1.screentoworld(scope.painters[i].dx, scope.painters[i].dy)[1];
 
-            sketch.strokepoint(old_x,old_y);
-            sketch.strokepoint(new_x,new_y);
+            sketch1.strokepoint(old_x,old_y);
+            sketch1.strokepoint(new_x,new_y);
+            sketch2.strokepoint(old_x,old_y);
+            sketch2.strokepoint(new_x,new_y);
             //sketch.linesegment (old_x, old_y, 0, new_x, new_y, 0);
-            sketch.endstroke();
+            sketch1.endstroke();
+            sketch2.endstroke();
         }
     }
     
@@ -1019,8 +1068,8 @@ ribbon.prototype.stroke = ribbonStroke;
 
 function ribbonClear()
 {
-    this.canvasWidth = window.size[0];
-    this.canvasHeight = window.size[1];
+    this.canvasWidth = window1.size[0];
+    this.canvasHeight = window1.size[1];
     
     //this.brushSize = lineSize;
     this.brushSize = 0.000002; // thin
@@ -1035,6 +1084,8 @@ function ribbonClear()
     this.created = true;
 }
 ribbon.prototype.clear = ribbonClear;
+
+*/
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////// SQUARES ////////////////
@@ -1073,29 +1124,42 @@ function squaresStroke( mouseX, mouseY )
     py = Math.sin(angle) * dx + Math.cos(angle) * dy;
 
     
-    sketch.glenable("blend");
-    sketch.beginstroke("basic2d");
+    sketch1.glenable("blend");
+    sketch1.beginstroke("basic2d");
+    sketch2.glenable("blend");
+    sketch2.beginstroke("basic2d");
 
-	sketch.gllinewidth(60.* this.brushSize);
+	sketch1.gllinewidth(60.* this.brushSize);
+	sketch2.gllinewidth(60.* this.brushSize);
 //    sketch.strokeparam ("scale", this.brushSize);
 
     var tColor = mapColor2RGBA(this.color[0],this.color[1],this.color[2],255 * this.pressure);
-//  sketch.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
-//	the above color assignment just didn't work
-      sketch.glcolor(tColor[0],tColor[1],tColor[2],tColor[3]);
+//	sketch1.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+//	sketch2.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+      sketch1.glcolor(tColor[0],tColor[1],tColor[2],tColor[3]);
+      sketch2.glcolor(tColor[0],tColor[1],tColor[2],tColor[3]);
+      
+    var point1_x1 = sketch1.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[0];
+    var point1_y1 = sketch1.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[1];
+    var point2_x1 = sketch1.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[0];
+    var point2_y1 = sketch1.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[1];
+    var point3_x1 = sketch1.screentoworld(mouseX + px, mouseY + py)[0];
+    var point3_y1 = sketch1.screentoworld(mouseX + px, mouseY + py)[1];
+    var point4_x1 = sketch1.screentoworld(mouseX - px, mouseY - py)[0];
+    var point4_y1 = sketch1.screentoworld(mouseX - px, mouseY - py)[1];
     
-    var point1_x = sketch.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[0];
-    var point1_y = sketch.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[1];
-    var point2_x = sketch.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[0];
-    var point2_y = sketch.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[1];
-    var point3_x = sketch.screentoworld(mouseX + px, mouseY + py)[0];
-    var point3_y = sketch.screentoworld(mouseX + px, mouseY + py)[1];
-    var point4_x = sketch.screentoworld(mouseX - px, mouseY - py)[0];
-    var point4_y = sketch.screentoworld(mouseX - px, mouseY - py)[1];
+    var point1_x2 = sketch2.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[0];
+    var point1_y2 = sketch2.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[1];
+    var point2_x2 = sketch2.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[0];
+    var point2_y2 = sketch2.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[1];
+    var point3_x2 = sketch2.screentoworld(mouseX + px, mouseY + py)[0];
+    var point3_y2 = sketch2.screentoworld(mouseX + px, mouseY + py)[1];
+    var point4_x2 = sketch2.screentoworld(mouseX - px, mouseY - py)[0];
+    var point4_y2 = sketch2.screentoworld(mouseX - px, mouseY - py)[1];
 
 
-	
-    sketch.framequad (point1_x,point1_y,0, point2_x, point2_y, 0, point3_x, point3_y, 0, point4_x, point4_y, 0);
+    sketch1.framequad (point1_x1,point1_y1,0, point2_x1, point2_y1, 0, point3_x1, point3_y1, 0, point4_x1, point4_y1, 0);
+    sketch2.framequad (point1_x2,point1_y2,0, point2_x2, point2_y2, 0, point3_x2, point3_y2, 0, point4_x2, point4_y2, 0);
     //sketch.endstroke();
 
     this.prevMouseX = mouseX;
@@ -1149,28 +1213,49 @@ function roundSquaresStroke( mouseX, mouseY )
     py = Math.sin(angle) * dx + Math.cos(angle) * dy;
 
     
-    sketch.glenable("blend");
-    sketch.beginstroke("basic2d");
-    sketch.strokeparam ("scale", this.brushSize);
-    var tColor = mapColor2RGBA(this.color[0],this.color[1],this.color[2],255 * this.pressure);
-    sketch.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+    sketch1.glenable("blend");
+    sketch1.beginstroke("basic2d");
+    sketch1.strokeparam ("scale", this.brushSize);
+    sketch2.glenable("blend");
+    sketch2.beginstroke("basic2d");
+    sketch2.strokeparam ("scale", this.brushSize);
     
-    var point1_x = sketch.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[0];
-    var point1_y = sketch.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[1];
-    var point2_x = sketch.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[0];
-    var point2_y = sketch.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[1];
-    var point3_x = sketch.screentoworld(mouseX + px, mouseY + py)[0];
-    var point3_y = sketch.screentoworld(mouseX + px, mouseY + py)[1];
-    var point4_x = sketch.screentoworld(mouseX - px, mouseY - py)[0];
-    var point4_y = sketch.screentoworld(mouseX - px, mouseY - py)[1];
+    var tColor = mapColor2RGBA(this.color[0],this.color[1],this.color[2],255 * this.pressure);
+    sketch1.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+    sketch2.strokeparam ("color",tColor[0],tColor[1],tColor[2],tColor[3]);
+    
+    var point1_x1 = sketch1.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[0];
+    var point1_y1 = sketch1.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[1];
+    var point2_x1 = sketch1.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[0];
+    var point2_y1 = sketch1.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[1];
+    var point3_x1 = sketch1.screentoworld(mouseX + px, mouseY + py)[0];
+    var point3_y1 = sketch1.screentoworld(mouseX + px, mouseY + py)[1];
+    var point4_x1 = sketch1.screentoworld(mouseX - px, mouseY - py)[0];
+    var point4_y1 = sketch1.screentoworld(mouseX - px, mouseY - py)[1];
+    
+    var point1_x2 = sketch2.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[0];
+    var point1_y2 = sketch2.screentoworld(this.prevMouseX - px, this.prevMouseY - py)[1];
+    var point2_x2 = sketch2.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[0];
+    var point2_y2 = sketch2.screentoworld(this.prevMouseX + px, this.prevMouseY + py)[1];
+    var point3_x2 = sketch2.screentoworld(mouseX + px, mouseY + py)[0];
+    var point3_y2 = sketch2.screentoworld(mouseX + px, mouseY + py)[1];
+    var point4_x2 = sketch2.screentoworld(mouseX - px, mouseY - py)[0];
+    var point4_y2 = sketch2.screentoworld(mouseX - px, mouseY - py)[1];
+    
+    sketch1.strokepoint(point1_x1,point1_y1);
+    sketch1.strokepoint(point2_x1,point2_y1);
+    sketch1.strokepoint(point3_x1,point3_y1);
+    sketch1.strokepoint(point4_x1,point4_y1);
+    sketch1.strokepoint(point1_x1,point1_y1);
+    
+    sketch2.strokepoint(point1_x2,point1_y2);
+    sketch2.strokepoint(point2_x2,point2_y2);
+    sketch2.strokepoint(point3_x2,point3_y2);
+    sketch2.strokepoint(point4_x2,point4_y2);
+    sketch2.strokepoint(point1_x2,point1_y2);
 
-    sketch.strokepoint(point1_x,point1_y);
-    sketch.strokepoint(point2_x,point2_y);
-    sketch.strokepoint(point3_x,point3_y);
-    sketch.strokepoint(point4_x,point4_y);
-    sketch.strokepoint(point1_x,point1_y);
-
-    sketch.endstroke();
+    sketch1.endstroke();
+    sketch2.endstroke();
 
     this.prevMouseX = mouseX;
     this.prevMouseY = mouseY;

@@ -320,11 +320,17 @@ function bang()
 function refresh()
 {
 	render2.to_texture  ("drawer2");
-//	render1.to_texture  ("drawer1");
+	// render1.to_texture  ("drawer1");
+    // render1.erase(); // erase the drawing context
+    // render1.drawclients(); // draw the client objects
 	outlet(1, "bang");
 	outlet(0, "bang");
     render2.swap();
     render1.swap();
+
+    // myrender.erase(); // erase the drawing context
+    // myrender.drawclients(); // draw the client objects
+    // myrender.swap(); // swap in the new drawing
 }
 
 

@@ -47,21 +47,19 @@ var brush = new simple(this,colorArray,BRUSH_SIZE,BRUSH_PRESSURE);
 //                       Listener Window 1
 var window1 = new JitterObject("jit.window", "monitor1");
 window1.fsaa = 1;
-// window1.size = [1280, 720];
 window1.size = [832, 468];
 window1.grow = 0;
-// window1.pos [0., 0., 0., 0.];
 var render1 = new JitterObject("jit.gl.render", "monitor1");
 var sketch1 = new JitterObject("jit.gl.sketch", "monitor1");
+// render1.doublebuffer = 0;
 //                       Matrix Out Window 2
 var window2 = new JitterObject("jit.window", "monitor2");
-// var window2 = this.patcher.newdefault(750, 350, "jit.pwindow", "@name", "monitor2");
 window2.fsaa = 1;
-window2.size = [640, 360];
-// window2.pos [0., 0., 0., 0.];
+window2.size = [832, 468]; // was 640, 360
 window2.visible = 0;
 var render2 = new JitterObject("jit.gl.render", "monitor2");
 var sketch2 = new JitterObject("jit.gl.sketch", "monitor2");
+// render2.doublebuffer = 0;
 
 var listener = new JitterListener(window1.getregisteredname(), windowcallback);
 var globalButton = 0;
@@ -319,18 +317,18 @@ function bang()
 // THE MAIN RENDER EVENT
 function refresh()
 {
-	render2.to_texture  ("drawer2");
-	// render1.to_texture  ("drawer1");
-    // render1.erase(); // erase the drawing context
-    // render1.drawclients(); // draw the client objects
-	outlet(1, "bang");
-	outlet(0, "bang");
-    render2.swap();
-    render1.swap();
+	render2.erase(); // erase the drawing context
+    render2.drawswap();
+    render2.to_texture  ("drawer2");
 
-    // myrender.erase(); // erase the drawing context
-    // myrender.drawclients(); // draw the client objects
-    // myrender.swap(); // swap in the new drawing
+    render1.swap();
+    outlet(0, "bang");
+
+// debug utility
+function swapit()   {
+    render1.drawswap();
+    render2.drawswap();
+    render2.to_texture  ("drawer2");
 }
 
 

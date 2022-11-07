@@ -274,10 +274,10 @@ function bang() {
 
 // THE MAIN RENDER EVENT
 function refresh() {
-  render2.erase(); // erase the drawing context
-  render2.drawswap();
+  // render2.erase(); // erase the drawing context
+  // render2.drawswap();
   render2.to_texture("drawer2");
-
+  render2.swap();
   render1.swap();
   outlet(0, "bang");
 }

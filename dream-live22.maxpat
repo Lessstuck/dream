@@ -193,7 +193,7 @@
 									"allowdrag" : 0,
 									"fontsize" : 10.0,
 									"id" : "obj-31",
-									"items" : [ "Y'CbCr 4:2:0 - 420v - 1920 x 1080", ",", "Y'CbCr 4:2:0 - 420v - 1280 x 720", ",", "Y'CbCr 4:2:0 - 420v - 1080 x 1920", ",", "Y'CbCr 4:2:0 - 420v - 1760 x 1328", ",", "Y'CbCr 4:2:0 - 420v - 640 x 480", ",", "Y'CbCr 4:2:0 - 420v - 1328 x 1760", ",", "Y'CbCr 4:2:0 - 420v - 1552 x 1552" ],
+									"items" : [ "Y'CbCr 4:2:2 - uyvy - 160 x 120", ",", "Y'CbCr 4:2:2 - uyvy - 176 x 144", ",", "Y'CbCr 4:2:2 - uyvy - 320 x 240", ",", "Y'CbCr 4:2:2 - uyvy - 352 x 288", ",", "Y'CbCr 4:2:2 - uyvy - 480 x 360", ",", "Y'CbCr 4:2:2 - uyvy - 640 x 480", ",", "Y'CbCr 4:2:2 - uyvy - 960 x 540", ",", "Y'CbCr 4:2:2 - uyvy - 1024 x 576", ",", "Y'CbCr 4:2:2 - uyvy - 1280 x 720" ],
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -369,7 +369,7 @@
 									"allowdrag" : 0,
 									"fontsize" : 10.0,
 									"id" : "obj-18",
-									"items" : "FaceTime HD Camera",
+									"items" : "FaceTime HD Camera (Built-in)",
 									"maxclass" : "umenu",
 									"numinlets" : 1,
 									"numoutlets" : 3,
@@ -2501,7 +2501,7 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 349.736572000000024, 519.0, 46.0, 22.0 ],
+									"patching_rect" : [ 349.736572000000024, 475.872131000000024, 46.0, 22.0 ],
 									"text" : "refresh"
 								}
 
@@ -2607,7 +2607,7 @@
 									"numinlets" : 0,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 14.0, 381.194519000000014, 44.0, 22.0 ],
+									"patching_rect" : [ 6.0, 446.194519000000014, 44.0, 22.0 ],
 									"text" : "r draw"
 								}
 
@@ -5752,9 +5752,9 @@
 									"patching_rect" : [ 821.0, 436.049743999999976, 64.0, 23.0 ],
 									"restore" : 									{
 										"brush" : [ 0 ],
-										"color" : [ 0.979166666666667, 0.359027777777778, 0.0, 1.0, 0.061111111111111, 1.0, 0.489583333333333 ],
+										"color" : [ 1.0, 0.111111, 0.111111, 1.0, 1.0, 1.0, 0.555556 ],
 										"composite" : [ 0 ],
-										"drawmode" : [ 2 ],
+										"drawmode" : [ 0 ],
 										"size" : [ 30 ]
 									}
 ,
@@ -5766,7 +5766,7 @@
 , 							{
 								"box" : 								{
 									"angle" : 0.0,
-									"bgcolor" : [ 0.979166666666667, 0.359027777777778, 0.0 ],
+									"bgcolor" : [ 1.0, 0.111111, 0.111111 ],
 									"id" : "obj-12",
 									"maxclass" : "panel",
 									"mode" : 0,
@@ -6607,7 +6607,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_gl_texture", "" ],
-									"patching_rect" : [ 14.0, 438.727356000000043, 163.0, 22.0 ],
+									"patching_rect" : [ 6.0, 525.7273560000001, 163.0, 22.0 ],
 									"text" : "jit.gl.texture projector @flip 0"
 								}
 
@@ -6622,7 +6622,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_gl_texture", "" ],
-									"patching_rect" : [ 14.0, 410.872131000000024, 268.0, 22.0 ],
+									"patching_rect" : [ 6.0, 475.872131000000024, 268.0, 22.0 ],
 									"text" : "jit.gl.texture monitor2 @adapt 1 @name drawer2"
 								}
 
@@ -6954,6 +6954,13 @@
 								"patchline" : 								{
 									"destination" : [ "obj-146", 0 ],
 									"source" : [ "obj-42", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-33", 0 ],
+									"source" : [ "obj-42", 2 ]
 								}
 
 							}
@@ -10347,7 +10354,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 5.0, 16.0, 133.0, 50.0 ],
 					"size" : 3,
-					"value" : 1,
+					"value" : 2,
 					"varname" : "radiogroup"
 				}
 

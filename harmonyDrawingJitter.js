@@ -45,23 +45,24 @@ var startDrawing = true;
 var brush = new simple(this, colorArray, BRUSH_SIZE, BRUSH_PRESSURE);
 
 //                       Listener Window 1
+// Context includes background video
 var window1 = new JitterObject("jit.window", "monitor1");
 window1.fsaa = 1;
 window1.size = [832, 468];
 window1.grow = 0;
 var render1 = new JitterObject("jit.gl.render", "monitor1");
 var sketch1 = new JitterObject("jit.gl.sketch", "monitor1");
-// render1.doublebuffer = 0;
+var listener = new JitterListener(window1.getregisteredname(), windowcallback);
+
 //                       Matrix Out Window 2
+// Context does not include background video, so that output texture has alpha channel
 var window2 = new JitterObject("jit.window", "monitor2");
 window2.fsaa = 1;
 window2.size = [832, 468]; // was 640, 360
 window2.visible = 0;
 var render2 = new JitterObject("jit.gl.render", "monitor2");
 var sketch2 = new JitterObject("jit.gl.sketch", "monitor2");
-// render2.doublebuffer = 0;
 
-var listener = new JitterListener(window1.getregisteredname(), windowcallback);
 var globalButton = 0;
 
 resetsketch();
@@ -284,6 +285,7 @@ function refresh() {
 // debug utility
 function swapit() {
   render1.drawswap();
+  render1.to_texture("drawer1");
   render2.drawswap();
   render2.to_texture("drawer2");
 }
@@ -340,8 +342,6 @@ function drawLine(
   //////////////////////////////////////////////////////////////////////  hack to fix scaling issue in 2022
   xPoint1 = 0.5 * xPoint1;
   xPoint2 = 0.5 * xPoint2;
-  // yPoint1 = 0.5 * yPoint1 + 180;
-  // yPoint2 = 0.5 * yPoint2 + 180;
   yPoint1 = 0.5 * yPoint1 + 0.5 * window1.size[1];
   yPoint2 = 0.5 * yPoint2 + 0.5 * window1.size[1];
 

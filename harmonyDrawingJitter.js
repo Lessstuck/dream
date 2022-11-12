@@ -487,7 +487,6 @@ function chrome(context, color, lineSize, press) {
   this.prevMouseY = null;
   this.color = color;
   this.brushSize = lineSize;
-  //this.brushSize = 0.0000002;
 
   this.points = new Array();
   this.count = 0;
@@ -514,8 +513,6 @@ function chromeStroke(mouseX, mouseY) {
     this.color[1],
     this.color[2],
     255 * this.pressure,
-    // this.color[0],this.color[1],this.color[2],255 * 0.1 * this.pressure,
-    //this.color[0],this.color[1],this.color[2],255,
     this.brushSize
   );
 
@@ -598,7 +595,6 @@ function furStroke(mouseX, mouseY) {
     this.color[1],
     this.color[2],
     255 * this.pressure,
-    //this.color[0],this.color[1],this.color[2],255,
     this.brushSize
   );
 

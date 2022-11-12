@@ -283,11 +283,17 @@ function refresh() {
   outlet(0, "bang");
 }
 // debug utility
-function swapit() {
+function swapThing() {
   render1.drawswap();
-  render1.to_texture("drawer1");
   render2.drawswap();
-  render2.to_texture("drawer2");
+}
+
+function swap1() {
+  render1.drawswap();
+}
+
+function swap2() {
+  render2.drawswap();
 }
 
 function notifydeleted() {

@@ -6075,11 +6075,11 @@
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 801.482543999999962, 301.549743999999976, 64.0, 23.0 ],
 									"restore" : 									{
-										"brush" : [ 1 ],
-										"color" : [ 0.634077495509366, 1.0, 0.25635103926097, 1.0, 0.248677248677249, 1.0, 0.628175519630485 ],
+										"brush" : [ 0 ],
+										"color" : [ 0.172440338722093, 0.0, 0.905311778290993, 1.0, 0.698412698412698, 1.0, 0.452655889145496 ],
 										"composite" : [ 0 ],
-										"drawmode" : [ 2 ],
-										"size" : [ 82 ]
+										"drawmode" : [ 1 ],
+										"size" : [ 73 ]
 									}
 ,
 									"text" : "autopattr",
@@ -6090,7 +6090,7 @@
 , 							{
 								"box" : 								{
 									"angle" : 0.0,
-									"bgcolor" : [ 0.634077495509366, 1.0, 0.25635103926097 ],
+									"bgcolor" : [ 0.172440338722093, 0.0, 0.905311778290993 ],
 									"id" : "obj-12",
 									"maxclass" : "panel",
 									"mode" : 0,
@@ -7613,16 +7613,25 @@
 						"assistshowspatchername" : 0,
 						"boxes" : [ 							{
 								"box" : 								{
-									"color" : [ 0.047059, 0.913725, 0.913725, 1.0 ],
-									"fontname" : "Arial",
-									"fontsize" : 12.0,
-									"id" : "obj-58",
+									"id" : "obj-47",
 									"maxclass" : "newobj",
-									"numinlets" : 0,
-									"numoutlets" : 1,
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 436.482544000000019, 403.0, 44.0, 22.0 ],
-									"text" : "r draw"
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "" ],
+									"patching_rect" : [ 167.482543999999962, 442.0, 29.5, 22.0 ],
+									"text" : "t b l"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-46",
+									"maxclass" : "newobj",
+									"numinlets" : 1,
+									"numoutlets" : 2,
+									"outlettype" : [ "bang", "" ],
+									"patching_rect" : [ 610.482543999999962, 429.0, 29.5, 22.0 ],
+									"text" : "t b l"
 								}
 
 							}
@@ -7767,18 +7776,6 @@
 									"outlettype" : [ "jit_matrix", "" ],
 									"patching_rect" : [ 256.982543999999962, 560.0, 499.0, 22.0 ],
 									"text" : "jit.gl.videoplane monitor3 @color 1. 1. 1. 1. @depth_enable 0 @transform_reset 2 @layer -1"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"id" : "obj-46",
-									"maxclass" : "button",
-									"numinlets" : 1,
-									"numoutlets" : 1,
-									"outlettype" : [ "bang" ],
-									"parameter_enable" : 0,
-									"patching_rect" : [ 584.982543999999962, 442.0, 24.0, 24.0 ]
 								}
 
 							}
@@ -8073,9 +8070,9 @@
 									"restore" : 									{
 										"menu1" : [ 0 ],
 										"menu2" : [ 0 ],
-										"move1" : [ 1 ],
+										"move1" : [ 0 ],
 										"move2" : [ 1 ],
-										"xfade" : [ 0 ]
+										"xfade" : [ 58 ]
 									}
 ,
 									"text" : "autopattr",
@@ -8144,7 +8141,7 @@
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 508.482543999999962, 84.5, 159.0, 22.0 ],
-									"prefix" : "~/Documents/GitHub/dream/media/",
+									"prefix" : "~/Desktop/dream/media/",
 									"presentation" : 1,
 									"presentation_rect" : [ 220.98254399999999, 65.5, 146.0, 22.0 ],
 									"varname" : "menu2"
@@ -8202,7 +8199,7 @@
 									"numinlets" : 1,
 									"numoutlets" : 2,
 									"outlettype" : [ "jit_matrix", "" ],
-									"patching_rect" : [ 631.482543999999962, 345.0, 115.0, 67.0 ],
+									"patching_rect" : [ 653.482543999999962, 389.144774999999981, 115.0, 67.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 220.98254399999999, 85.5, 180.0, 120.0 ],
 									"sync" : 1
@@ -9305,7 +9302,7 @@
 										}
 ,
 										"classnamespace" : "box",
-										"rect" : [ 1146.0, 458.0, 500.0, 524.0 ],
+										"rect" : [ 906.0, 458.0, 500.0, 524.0 ],
 										"bglocked" : 0,
 										"openinpresentation" : 0,
 										"default_fontsize" : 12.0,
@@ -10012,7 +10009,7 @@
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 185.48254399999999, 84.5, 159.0, 22.0 ],
-									"prefix" : "~/Documents/GitHub/dream/media/",
+									"prefix" : "~/Desktop/dream/media/",
 									"presentation" : 1,
 									"presentation_rect" : [ 18.0, 65.5, 146.0, 22.0 ],
 									"varname" : "menu1"
@@ -10116,7 +10113,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-25", 0 ],
+									"destination" : [ "obj-47", 0 ],
 									"order" : 0,
 									"source" : [ "obj-13", 0 ]
 								}
@@ -10337,8 +10334,38 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-25", 1 ],
+									"order" : 1,
+									"source" : [ "obj-46", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-25", 0 ],
 									"source" : [ "obj-46", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-27", 0 ],
+									"order" : 0,
+									"source" : [ "obj-46", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-25", 0 ],
+									"source" : [ "obj-47", 1 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-25", 0 ],
+									"source" : [ "obj-47", 0 ]
 								}
 
 							}
@@ -10374,13 +10401,6 @@
 								"patchline" : 								{
 									"destination" : [ "obj-45", 0 ],
 									"source" : [ "obj-57", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-25", 0 ],
-									"source" : [ "obj-58", 0 ]
 								}
 
 							}
@@ -10442,24 +10462,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-25", 1 ],
-									"order" : 1,
-									"source" : [ "obj-80", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
-									"destination" : [ "obj-27", 0 ],
-									"order" : 0,
-									"source" : [ "obj-80", 0 ]
-								}
-
-							}
-, 							{
-								"patchline" : 								{
 									"destination" : [ "obj-46", 0 ],
-									"disabled" : 1,
 									"source" : [ "obj-80", 0 ]
 								}
 
@@ -10790,7 +10793,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 5.0, 16.0, 133.0, 50.0 ],
 					"size" : 3,
-					"value" : 0,
+					"value" : 2,
 					"varname" : "radiogroup"
 				}
 
@@ -10983,7 +10986,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "clip.json",
-				"bootpath" : "~/Documents/GitHub/dream",
+				"bootpath" : "~/Desktop/dream",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -10991,14 +10994,14 @@
 , 			{
 				"name" : "harmonyDrawingJitter.js",
 				"bootpath" : "~/Documents/GitHub/dream",
-				"patcherrelativepath" : ".",
+				"patcherrelativepath" : "../../Documents/GitHub/dream",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "pattr-helper.maxpat",
 				"bootpath" : "~/Library/Application Support/Cycling '74/Max 8/Examples/utilities",
-				"patcherrelativepath" : "../../../Library/Application Support/Cycling '74/Max 8/Examples/utilities",
+				"patcherrelativepath" : "../../Library/Application Support/Cycling '74/Max 8/Examples/utilities",
 				"type" : "JSON",
 				"implicit" : 1
 			}

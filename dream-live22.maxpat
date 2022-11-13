@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 33.0, 446.0, 1328.0, 454.0 ],
+		"rect" : [ 96.0, 424.0, 1328.0, 454.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "jit_matrix", "" ],
-					"patching_rect" : [ 746.0, 1.0, 586.0, 411.0 ],
+					"patching_rect" : [ 746.0, 7.5, 586.0, 411.0 ],
 					"sync" : 1
 				}
 
@@ -84,11 +84,11 @@
 					"hidden" : 1,
 					"id" : "obj-7",
 					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 2,
-					"outlettype" : [ "bang", "" ],
-					"patching_rect" : [ 737.0, 107.0, 34.0, 22.0 ],
-					"text" : "sel 1"
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"patching_rect" : [ 737.0, 107.0, 22.0, 22.0 ],
+					"text" : "t b"
 				}
 
 			}
@@ -6075,11 +6075,11 @@
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 801.482543999999962, 301.549743999999976, 64.0, 23.0 ],
 									"restore" : 									{
-										"brush" : [ 8 ],
-										"color" : [ 0.959309358847465, 1.0, 0.829099307159353, 1.0, 0.206349206349206, 1.0, 0.914549653579677 ],
+										"brush" : [ 1 ],
+										"color" : [ 0.634077495509366, 1.0, 0.25635103926097, 1.0, 0.248677248677249, 1.0, 0.628175519630485 ],
 										"composite" : [ 0 ],
-										"drawmode" : [ 1 ],
-										"size" : [ 92 ]
+										"drawmode" : [ 2 ],
+										"size" : [ 82 ]
 									}
 ,
 									"text" : "autopattr",
@@ -6090,7 +6090,7 @@
 , 							{
 								"box" : 								{
 									"angle" : 0.0,
-									"bgcolor" : [ 0.959309358847465, 1.0, 0.829099307159353 ],
+									"bgcolor" : [ 0.634077495509366, 1.0, 0.25635103926097 ],
 									"id" : "obj-12",
 									"maxclass" : "panel",
 									"mode" : 0,
@@ -8073,7 +8073,7 @@
 									"restore" : 									{
 										"menu1" : [ 0 ],
 										"menu2" : [ 0 ],
-										"move1" : [ 0 ],
+										"move1" : [ 1 ],
 										"move2" : [ 1 ],
 										"xfade" : [ 0 ]
 									}
@@ -10790,7 +10790,7 @@
 					"parameter_enable" : 0,
 					"patching_rect" : [ 5.0, 16.0, 133.0, 50.0 ],
 					"size" : 3,
-					"value" : 2,
+					"value" : 0,
 					"varname" : "radiogroup"
 				}
 

@@ -1041,6 +1041,17 @@ function squaresStroke(mouseX, mouseY) {
     point4_y1,
     0
   );
+
+  //////////////////////////////////////////////////////////////////////  hack to fix scaling issue in 2022
+  point1_x2 = point1_x2 / 2 - 0.73;
+  point1_y2 = point1_y2 / 2 - 0.41;
+  point2_x2 = point2_x2 / 2 - 0.73;
+  point2_y2 = point2_y2 / 2 - 0.41;
+  point3_x2 = point3_x2 / 2 - 0.73;
+  point3_y2 = point3_y2 / 2 - 0.41;
+  point4_x2 = point4_x2 / 2 - 0.73;
+  point4_y2 = point4_y2 / 2 - 0.41;
+
   sketch2.framequad(
     point1_x2,
     point1_y2,
@@ -1157,6 +1168,16 @@ function roundSquaresStroke(mouseX, mouseY) {
   var point3_y2 = sketch2.screentoworld(mouseX + px, mouseY + py)[1];
   var point4_x2 = sketch2.screentoworld(mouseX - px, mouseY - py)[0];
   var point4_y2 = sketch2.screentoworld(mouseX - px, mouseY - py)[1];
+
+  //////////////////////////////////////////////////////////////////////  hack to fix scaling issue in 2022
+  point1_x2 = point1_x2 / 2 - 0.73;
+  point1_y2 = point1_y2 / 2 - 0.41;
+  point2_x2 = point2_x2 / 2 - 0.73;
+  point2_y2 = point2_y2 / 2 - 0.41;
+  point3_x2 = point3_x2 / 2 - 0.73;
+  point3_y2 = point3_y2 / 2 - 0.41;
+  point4_x2 = point4_x2 / 2 - 0.73;
+  point4_y2 = point4_y2 / 2 - 0.41;
 
   sketch1.strokepoint(point1_x1, point1_y1);
   sketch1.strokepoint(point2_x1, point2_y1);

@@ -6075,11 +6075,11 @@
 									"outlettype" : [ "", "", "", "" ],
 									"patching_rect" : [ 801.482543999999962, 301.549743999999976, 64.0, 23.0 ],
 									"restore" : 									{
-										"brush" : [ 0 ],
-										"color" : [ 0.172440338722093, 0.0, 0.905311778290993, 1.0, 0.698412698412698, 1.0, 0.452655889145496 ],
+										"brush" : [ 5 ],
+										"color" : [ 0.02756699292496, 0.0, 0.868360277136259, 1.0, 0.671957671957672, 1.0, 0.434180138568129 ],
 										"composite" : [ 0 ],
-										"drawmode" : [ 1 ],
-										"size" : [ 73 ]
+										"drawmode" : [ 0 ],
+										"size" : [ 0 ]
 									}
 ,
 									"text" : "autopattr",
@@ -6090,7 +6090,7 @@
 , 							{
 								"box" : 								{
 									"angle" : 0.0,
-									"bgcolor" : [ 0.172440338722093, 0.0, 0.905311778290993 ],
+									"bgcolor" : [ 0.02756699292496, 0.0, 0.868360277136259 ],
 									"id" : "obj-12",
 									"maxclass" : "panel",
 									"mode" : 0,
@@ -6255,8 +6255,8 @@
 									"numinlets" : 6,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 210.611541999999986, 207.5, 157.0, 23.0 ],
-									"text" : "scale 0 127 0.000001 0.2"
+									"patching_rect" : [ 210.611541999999986, 207.5, 162.0, 23.0 ],
+									"text" : "scale 0 127 0.000001 0.05"
 								}
 
 							}
@@ -8070,7 +8070,7 @@
 									"restore" : 									{
 										"menu1" : [ 0 ],
 										"menu2" : [ 0 ],
-										"move1" : [ 0 ],
+										"move1" : [ 1 ],
 										"move2" : [ 1 ],
 										"xfade" : [ 58 ]
 									}
@@ -8141,7 +8141,7 @@
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 508.482543999999962, 84.5, 159.0, 22.0 ],
-									"prefix" : "~/Desktop/dream/media/",
+									"prefix" : "~/Documents/GitHub/dream/media/",
 									"presentation" : 1,
 									"presentation_rect" : [ 220.98254399999999, 65.5, 146.0, 22.0 ],
 									"varname" : "menu2"
@@ -10009,7 +10009,7 @@
 									"outlettype" : [ "int", "", "" ],
 									"parameter_enable" : 0,
 									"patching_rect" : [ 185.48254399999999, 84.5, 159.0, 22.0 ],
-									"prefix" : "~/Desktop/dream/media/",
+									"prefix" : "~/Documents/GitHub/dream/media/",
 									"presentation" : 1,
 									"presentation_rect" : [ 18.0, 65.5, 146.0, 22.0 ],
 									"varname" : "menu1"
@@ -10986,7 +10986,7 @@
 ,
 		"dependency_cache" : [ 			{
 				"name" : "clip.json",
-				"bootpath" : "~/Desktop/dream",
+				"bootpath" : "~/Documents/GitHub/dream",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
 				"implicit" : 1
@@ -10994,14 +10994,14 @@
 , 			{
 				"name" : "harmonyDrawingJitter.js",
 				"bootpath" : "~/Documents/GitHub/dream",
-				"patcherrelativepath" : "../../Documents/GitHub/dream",
+				"patcherrelativepath" : ".",
 				"type" : "TEXT",
 				"implicit" : 1
 			}
 , 			{
 				"name" : "pattr-helper.maxpat",
 				"bootpath" : "~/Library/Application Support/Cycling '74/Max 8/Examples/utilities",
-				"patcherrelativepath" : "../../Library/Application Support/Cycling '74/Max 8/Examples/utilities",
+				"patcherrelativepath" : "../../../Library/Application Support/Cycling '74/Max 8/Examples/utilities",
 				"type" : "JSON",
 				"implicit" : 1
 			}
